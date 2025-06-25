@@ -80,4 +80,4 @@ if submitted:
     sheet_keluarga.append_row(data)
 
     st.success("✅ Data kepala keluarga disimpan.")
-    st.switch_page("form_anggota.py")
+    st.switch_page("pages/form_anggota.py")
