@@ -8,9 +8,10 @@ st.set_page_config(page_title="Form Anggota Keluarga", page_icon="🧑‍🤝‍
 @st.cache_resource
 def connect_sheets():
     scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-    creds = ServiceAccountCredentials.from_json_keyfile_name("service_account.json", scope)
-    return gspread.authorize(creds)
-
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(dict(st.secrets["gspread"]), scope)
+    client = gspread.authorize(creds)
+    return client
+    
 client = connect_sheets()
 sheet_anggota = client.open("Data_Keluarga_DesaCantik").worksheet("anggota_keluarga")
 
